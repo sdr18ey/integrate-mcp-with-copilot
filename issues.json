@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Add Role-Based Access Control (Admin, Coordinator, Student)",
+    "body": "Implement role-based user management with different permissions and dashboards for Admin, Club Coordinator, and Student roles.\n\n## Requirements\n- Admin role: approve/reject clubs and events, manage users, view all system data\n- Coordinator role: create clubs, manage events, oversee registrations\n- Student role: browse clubs, register for events, manage profile\n- Role-based route protection on both frontend and backend\n\n## Blocks\n#2, #3, #5, #6",
+    "labels": ["enhancement"]
+  },
+  {
+    "title": "Add Club/Organization Management",
+    "body": "Implement full club management system as separate entities from activities.\n\n## Requirements\n- Create and manage clubs with categories (Technical, Cultural, Sports, Social Service, Arts, Literary)\n- Assign coordinators to clubs\n- Track club membership\n- Club approval workflow (pending → approved by admins)\n- Club-specific pages and details\n\n## Depends on\n#1\n\n## Blocks\n#3",
+    "labels": ["enhancement"]
+  },
+  {
+    "title": "Add Event Management Features",
+    "body": "Extend activity management with full event lifecycle capabilities.\n\n## Requirements\n- Event dates, times, and venues\n- Event categories (Workshop, Seminar, Competition, Cultural, Sports, Hackathon, Conference)\n- Admin approval workflow for events\n- Event editing and deletion by coordinators\n- Attendance tracking\n- Registration deadline enforcement\n\n## Depends on\n#1, #2\n\n## Blocks\n#5, #6",
+    "labels": ["enhancement"]
+  },
+  {
+    "title": "Implement User Authentication & Profiles",
+    "body": "Add secure user registration, login, and profile management system.\n\n## Requirements\n- Secure registration and login system\n- JWT token-based authentication\n- User profiles with phone, department, year, roll number\n- Password hashing with bcrypt\n- Protected routes\n- Token refresh mechanism\n\n## Blocks\n#2, #3, #5, #6",
+    "labels": ["enhancement"]
+  },
+  {
+    "title": "Build Advanced Registration System",
+    "body": "Enhance signup functionality with status tracking and validation.\n\n## Requirements\n- Registration status tracking (pending, confirmed, cancelled, attended)\n- Registration deadline enforcement\n- Duplicate registration prevention\n- Automatic capacity checking\n- Ability for students to cancel registrations\n- Coordinator view of registrations per event\n\n## Depends on\n#1, #3, #4",
+    "labels": ["enhancement"]
+  },
+  {
+    "title": "Create Role-Specific Dashboards",
+    "body": "Build different dashboard views for each user role.\n\n## Requirements\n- Student dashboard: view registered events, event statistics, quick actions\n- Coordinator dashboard: manage club activities, view registrations, handle approvals\n- Admin dashboard: approval queues, user management, system overview\n- Responsive design for mobile and desktop\n\n## Depends on\n#1, #3, #4, #9",
+    "labels": ["enhancement", "ui"]
+  },
+  {
+    "title": "Migrate to MongoDB for Persistent Storage",
+    "body": "Replace in-memory storage with MongoDB for scalable data persistence.\n\n## Requirements\n- Set up MongoDB connection with PyMongo/Motor\n- Create database schemas for Users, Clubs, Events, Registrations\n- Migrate existing activity data\n- Implement proper data relationships\n- Handle database errors gracefully\n\n## Depends on\n#4\n\n## Blocks\n#5, #8, #11",
+    "labels": ["enhancement", "backend"]
+  },
+  {
+    "title": "Expand API to 30+ Endpoints",
+    "body": "Build comprehensive RESTful API with proper structure.\n\n## Current Status\n- 2 endpoints (GET /activities, POST /activities/{activity_name}/signup)\n\n## Requirements\n- Authentication endpoints (register, login, profile management)\n- User management endpoints (CRUD operations)\n- Club management endpoints (CRUD + approval/rejection)\n- Event management endpoints (CRUD + approval/rejection)\n- Registration management endpoints (list, create, cancel)\n- Proper error handling and validation\n- API documentation with Swagger/OpenAPI\n\n## Depends on\n#4, #7\n\n## Blocks\n#9",
+    "labels": ["enhancement", "backend", "api"]
+  },
+  {
+    "title": "Build Multi-Page React Frontend",
+    "body": "Create full React SPA with role-based pages and components.\n\n## Requirements\n- Multi-page SPA with React Router\n- Role-based navigation in Navbar\n- Form validation and error handling\n- Loading states and user feedback\n- Responsive design with Tailwind CSS\n- Login/Register pages\n- Protected routes using PrivateRoute component\n\n## Depends on\n#1, #4, #8, #6",
+    "labels": ["enhancement", "frontend", "ui"]
+  },
+  {
+    "title": "Implement Approval Workflows",
+    "body": "Add administrative approval processes for clubs and events.\n\n## Requirements\n- Admin approval queue for club creation\n- Admin approval queue for event proposals\n- Coordinator ability to view approval status\n- Email notifications for approval decisions\n- Rejection with feedback capability\n\n## Depends on\n#1, #2, #3, #4",
+    "labels": ["enhancement", "feature"]
+  },
+  {
+    "title": "Add Advanced Filtering & Search",
+    "body": "Enhance discovery of activities, clubs, and events.\n\n## Requirements\n- Filter activities by category, date, coordinator\n- Search functionality across clubs and events\n- Sort options (by date, popularity, capacity)\n- Filter by registration status\n- Save favorite activities\n\n## Depends on\n#7, #8, #9",
+    "labels": ["enhancement", "frontend"]
+  },
+  {
+    "title": "Setup Production Architecture & Security",
+    "body": "Prepare system for production deployment and secure implementation.\n\n## Requirements\n- Comprehensive error handling throughout the application\n- Security headers and CORS configuration\n- Input validation and sanitization\n- Rate limiting for API endpoints\n- Environment configuration (.env file)\n- Logging and monitoring setup\n- Data backup strategy\n- Session management and graceful logout\n\n## Depends on\n#4, #7, #8, #9",
+    "labels": ["enhancement", "security", "devops"]
+  }
+]
